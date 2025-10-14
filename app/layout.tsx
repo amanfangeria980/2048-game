@@ -17,8 +17,11 @@ const space = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-    title: "2048 Game",
+    title: "2048 Game - Aman Fangeria",
     description: "Created by Aman Fangeria",
+    icons: {
+        icon: "/favicon.svg",
+    },
 };
 
 export default function RootLayout({

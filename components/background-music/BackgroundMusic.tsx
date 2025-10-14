@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { Volume2, VolumeOff } from "lucide-react";
-import { Button } from "./retroui/Button";
+import { Button } from "@/components/retroui/Button";
 
 export default function BackgroundMusic() {
     const audioRef = useRef<HTMLAudioElement>(null);

@@ -109,7 +109,7 @@ yarn dev
 **useGameLogic.ts** - React hook for state management:
 - Game state (board, score, best score, status)
 - Keyboard event handling
-- Game restart and continue functionality
+- Game restart and functionality
 - LocalStorage integration
 
 ### Component Architecture

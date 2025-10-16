@@ -1,36 +1,135 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎮 2048 Game
 
-## Getting Started
+A fully functional implementation of the popular 2048 puzzle game built with **Next.js**, **React**, **TypeScript**, **RetroUI** and **Tailwind CSS**. This implementation follows functional programming principles and features a beautiful retro-styled UI.
 
-First, run the development server:
+![2048 Game](public/assets/images/game.gif)
 
+## ✨ Features
+
+### Core Gameplay
+- ✅ **4x4 default board** with smooth gameplay
+- ✅ **Keyboard controls** - Arrow Keys and WASD support
+- ✅ **Touch controls** - Mobile-friendly on-screen buttons
+- ✅ **Tile merging** - Combine tiles with same numbers
+- ✅ **Random tile generation** - 2 or 4 appears after each move
+- ✅ **Win/Lose detection** - Reach 2048 to win, game over when no moves left
+
+### Advanced Features
+- 🎨 **Configurable board sizes** - 3x3, 4x4, 5x5, 6x6
+- 📊 **Score tracking** - Current score and best score
+- 💾 **Persistent best score** - Saved in localStorage
+- 🔄 **Game restart** - Start fresh anytime
+- 🎭 **Beautiful animations** - Smooth tile transitions
+- 📱 **Responsive design** - Works on desktop, tablet, and mobile
+
+## 🚀 Getting Started
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/amanfangeria980/2048-game
+cd 2048-game
+```
+
+2. Install dependencies:
+```bash
+npm install
+# or
+yarn install
+```
+
+3. Run the development server:
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Open [http://localhost:3000/play](http://localhost:3000/play) in your browser
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🎯 How to Play
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. **Move tiles** using:
+   - Arrow Keys (↑ ↓ ← →)
+   - WASD keys
+   - On-screen buttons (mobile)
 
-## Learn More
+2. **Merge tiles** - When two tiles with the same number touch, they merge into one with their sum
 
-To learn more about Next.js, take a look at the following resources:
+3. **Goal** - Reach the **2048** tile to win!
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+4. **Game Over** - No more moves available
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+5. **Choose board size** - Select 3×3 to 6×6 for different challenges
 
-## Deploy on Vercel
+## 📁 Project Structure
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+2048-game/
+├── app/
+│   ├── hooks/
+│   │   └── useGameLogic.ts      # Game state management
+│   ├── utils/
+│   │   └── boardUtils.ts        # Pure functional game logic
+│   ├── play/
+│   │   └── page.tsx             # Main game page
+│   └── globals.css              # Global styles & animations
+│
+├── components/
+│   ├── tile/
+│   │   └── Tile.tsx             # Individual tile component
+│   ├── game-box/
+│   │   └── GameBox.tsx          # Game board grid
+│   ├── scoreboard/
+│   │   └── ScoreBoard.tsx       # Score display
+│   ├── controls/
+│   │   └── Controls.tsx         # Game controls
+│   └── retroui/
+│       ├── Button.tsx           # Retro button component
+│       └── Text.tsx             # Retro text component
+│
+└── public/
+    └── assets/
+        └── images/              # images
+        └── audio/               # Audio files
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🧠 Implementation Details
+
+### Key Functions
+
+**boardUtils.ts** - Pure functional game logic:
+- `initializeBoard(size)` - Create new board with random tiles
+- `moveLeft/Right/Up/Down(board)` - Move and merge tiles
+- `canMove(board)` - Check if moves are possible
+- `hasWon(board)` - Check for 2048 tile
+- `addRandomTile(board)` - Add new tile after move
+
+**useGameLogic.ts** - React hook for state management:
+- Game state (board, score, best score, status)
+- Keyboard event handling
+- Game restart and continue functionality
+- LocalStorage integration
+
+### Component Architecture
+
+```
+PlayPage
+├── ScoreBoard (displays score & game status)
+├── Controls (new game, board size, touch buttons)
+└── GameBox (game board)
+    ├── Grid Background
+    ├── Tiles (animated)
+    └── Game Over Overlay
+```
+
+## 🎨 Customization
+
+### Board Sizes
+
+Add/remove board sizes in `components/controls/Controls.tsx`:
+
+```typescript
+const boardSizes = [3, 4, 5, 6]; // Customize available sizes
+```
